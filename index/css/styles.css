@@ -1,0 +1,188 @@
+/* css/styles.css
+   Upgraded, attractive styling for Quali-Health Care site
+   - modern typography
+   - soft gradients, glass cards, subtle animations
+   - accessible focus styles
+   - responsive layout improvements
+*/
+
+/* ========== Variables & Reset ========== */
+:root{
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #586179;
+  --primary: #0ea5a4;      /* teal */
+  --accent:  #0b6b94;      /* deep ocean */
+  --highlight: linear-gradient(135deg,#0ea5a4,#0b6b94);
+  --card-shadow: 0 12px 30px rgba(11,18,32,0.06);
+  --glass: rgba(255,255,255,0.76);
+  --radius: 14px;
+  --container: 1200px;
+
+  --wa-green: #25D366; /* kept if needed later */
+  --ease: cubic-bezier(.22,.9,.31,1);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+/* Utility container */
+.container{ max-width:var(--container); margin:0 auto; padding:0 20px; }
+
+/* ========== Global helpers ========== */
+.section{ padding:64px 0; }
+.muted{ color:var(--muted); }
+.small{ font-size:13px; color:var(--muted); }
+.h-100{ min-height:100vh; }
+
+/* ========== Navigation ========== */
+.nav{ background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86)); position:sticky; top:0; z-index:80; backdrop-filter:saturate(.9) blur(6px); box-shadow:0 6px 22px rgba(8,12,20,0.04); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0; }
+
+/* Brand */
+.brand{ display:flex; align-items:center; gap:14px; }
+.logo{ width:56px; height:56px; object-fit:contain; border-radius:10px; background:linear-gradient(180deg,#fff,#f7fbfc); padding:8px; box-shadow:0 8px 24px rgba(11,18,32,0.04); }
+.brand-text .company{ font-weight:700; font-size:16px; letter-spacing:0.1px; }
+.brand-text .tag{ font-size:12px; color:var(--muted); margin-top:2px; }
+
+/* Nav links */
+.nav-links{ display:flex; gap:14px; align-items:center; }
+.nav-links a{ text-decoration:none; color:var(--muted); padding:8px 10px; border-radius:10px; font-weight:600; transition:all .18s var(--ease); }
+.nav-links a:hover{ color:var(--accent); transform:translateY(-3px); box-shadow:0 6px 18px rgba(11,18,32,0.04); }
+.btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:700; font-size:14px; }
+.btn-primary{ background:var(--accent); color:#fff; box-shadow:0 10px 30px rgba(11,107,148,0.12); border:none; }
+.btn-ghost{ border:1px solid rgba(11,18,32,0.06); background:transparent; color:var(--text); }
+
+/* hide nav links on small screens */
+@media(max-width:880px){ .nav-links{ display:none; } }
+
+/* ========== Hero ========== */
+.hero{ padding:68px 0; }
+.hero-grid{ display:grid; grid-template-columns:1fr; gap:22px; align-items:start; }
+@media(min-width:980px){ .hero-grid{ grid-template-columns: 1fr 420px; } }
+
+/* glass card style */
+.glass{ background:var(--glass); border-radius:var(--radius); padding:26px; box-shadow:var(--card-shadow); border:1px solid rgba(11,18,32,0.04); transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
+.glass:hover{ transform:translateY(-6px); box-shadow:0 20px 60px rgba(11,18,32,0.09); }
+
+/* Hero content */
+.hero-card h1{ margin:0; font-size:28px; line-height:1.03; }
+@media(min-width:880px){ .hero-card h1{ font-size:36px; } }
+.hero-card .accent{ background: -webkit-linear-gradient(90deg,var(--primary),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:800; }
+
+.lead{ margin-top:12px; color:var(--muted); line-height:1.6; font-size:15px; }
+
+/* CTA row */
+.cta-row{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+.cta-row .btn-primary{ padding:12px 18px; font-size:15px; border-radius:12px; }
+.cta-row .btn-outline{ padding:10px 16px; border-radius:12px; }
+
+/* Stats */
+.stats{ display:flex; gap:18px; margin-top:18px; list-style:none; padding:0; }
+.stats li{ text-align:center; color:var(--muted); font-size:13px; }
+.stats strong{ display:block; font-size:18px; color:var(--text); }
+
+/* ========== Right package card ========== */
+.package-card .banner{ height:180px; overflow:hidden; border-radius:12px; }
+.banner-img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s var(--ease); }
+.package-card:hover .banner-img{ transform:scale(1.02); }
+.package-card h3{ margin-top:14px; font-size:18px; }
+.package-card .muted{ color:var(--muted); margin-top:6px; }
+.features{ padding-left:18px; margin-top:12px; color:var(--muted); }
+.card-actions{ display:flex; gap:12px; margin-top:14px; }
+
+/* ========== Services / Cards layout ========== */
+.cards{ display:grid; gap:16px; margin-top:18px; }
+@media(min-width:880px){ .cards{ grid-template-columns:repeat(3,1fr); } }
+.card{ background:var(--surface); padding:18px; border-radius:12px; border:1px solid rgba(11,18,32,0.04); box-shadow:0 8px 22px rgba(11,18,32,0.03); transition:transform .28s var(--ease), box-shadow .28s var(--ease); }
+.card:hover{ transform:translateY(-8px); box-shadow:0 24px 60px rgba(11,18,32,0.06); }
+.card h4{ margin:0 0 8px 0; font-size:16px; }
+.card p{ margin:0; color:var(--muted); line-height:1.6; }
+
+/* Grid for more than 3 services (wrap nicely) */
+@media(min-width:1200px){
+  .cards{ grid-template-columns:repeat(3,1fr); }
+}
+
+/* ========== About & bullets ========== */
+.bullets{ margin-top:12px; color:var(--muted); list-style:disc; padding-left:18px; }
+
+/* ========== Contact & Form ========== */
+.contact-grid{ display:grid; gap:18px; }
+@media(min-width:980px){ .contact-grid{ grid-template-columns:1fr 360px; } }
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(11,18,32,0.06);
+  margin-top:8px;
+  font-size:14px;
+  color:var(--text);
+  background: #fff;
+  transition:box-shadow .18s var(--ease), border-color .18s var(--ease), transform .12s var(--ease);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{ color:#98a0ad; }
+
+/* focus styles */
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 12px 40px rgba(11,107,148,0.08);
+  transform:translateY(-2px);
+}
+
+/* label */
+label{ font-size:13px; color:var(--muted); display:block; margin-top:12px; }
+
+/* form actions */
+.form-actions{ display:flex; gap:10px; margin-top:14px; align-items:center; flex-wrap:wrap; }
+.form-note{ margin-top:12px; color:green; font-size:13px; }
+
+/* ========== Footer ========== */
+.footer{ border-top:1px solid rgba(11,18,32,0.04); margin-top:36px; background:var(--surface); padding:20px 0; }
+.footer-inner{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+@media(max-width:720px){ .footer-inner{ flex-direction:column; gap:8px; text-align:center; } }
+
+/* ========== Floating decorative accent ========== */
+/* subtle top-left decorative gradient bar on hero */
+.hero::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:220px;
+  background:linear-gradient(180deg, rgba(14,165,164,0.08) 0%, rgba(11,107,148,0.04) 60%, transparent 100%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* ========== Small screens tweaks ========== */
+@media(max-width:880px){
+  .container{ padding:0 16px; }
+  .brand-text .company{ font-size:15px; }
+  .hero{ padding:36px 0; }
+  .package-card .banner{ height:160px; }
+}
+
+/* ========== Accessibility helpers ========== */
+a:focus, button:focus, input:focus, textarea:focus{ outline:3px solid rgba(11,107,148,0.12); outline-offset:3px; }
+
+/* ========== Minor utilities ========== */
+.text-center{ text-align:center; }
+.mb-8{ margin-bottom:32px; }
+
+/* ========== Decorative separators ========== */
+.section + .section{ padding-top:40px; }
+.section h2{ position:relative; display:inline-block; padding-bottom:8px; }
+.section h2::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:3px; width:56px; background:var(--accent); border-radius:4px; transform-origin:left; }
+
+/* ========== Print tweaks ========== */
+@media print{
+  .nav, .btn, .form-actions, .footer{ display:none !important; }
+}
